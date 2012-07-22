@@ -11,6 +11,4 @@ isvalid x | mod x 3 == 0  = True
           | otherwise     = False
 
 main = do
-    let srclist = [1..999]
-    let valid_numbers = filter isvalid srclist
-    print $ sum valid_numbers
+    print $ sum ( filter isvalid [1..999] )
