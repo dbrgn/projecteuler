@@ -1,4 +1,4 @@
-from primes import getprimes
+from algorithms import getprimes
 
 i = 0
 for prime in getprimes():

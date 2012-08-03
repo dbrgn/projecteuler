@@ -1,6 +1,6 @@
 # BROKEN
 import sys
-from primes import getprimes
+from algorithms import getprimes
 
 factors = []
 n = int(sys.argv[1])
