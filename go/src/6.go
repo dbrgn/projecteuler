@@ -18,37 +18,13 @@
 
 package main
 
-import (
-    "fmt"
-)
-
-func numbersGenerator(ch chan int) {
-    i := 1
-    for {
-        ch <- i
-        i++
-    }
-}
-
-func squaresGenerator(ch chan int) {
-    i := 1
-    for {
-        ch <- i * i
-        i++
-    }
-}
+import "fmt"
 
 func main() {
-    numbers := make(chan int)
-    squares := make(chan int)
-
-    go numbersGenerator(numbers)
-    go squaresGenerator(squares)
-
     var sumOfSquares, squareOfSums int
-    for i := 0; i < 100; i++ {
-        sumOfSquares += <-squares
-        squareOfSums += <-numbers
+    for i := 1; i <= 100; i++ {
+        squareOfSums += i
+        sumOfSquares += i * i
     }
     squareOfSums *= squareOfSums
     fmt.Printf("%d - %d = %d\n", squareOfSums, sumOfSquares, squareOfSums-sumOfSquares)
