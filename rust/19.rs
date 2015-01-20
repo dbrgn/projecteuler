@@ -20,7 +20,7 @@ fn is_leap_year(year: u16) -> bool {
     let divisible = (year % 4 == 0, year % 100 == 0, year % 400 == 0);
     match divisible {
         (false, _, _) => false,
-        (true, false, _) => false,
+        (true, false, _) => true,
         (true, true, false) => false,
         (true, true, true) => true
     }
@@ -48,9 +48,15 @@ fn days_per_month(id: u8, year: u16) -> u8 {
 
 
 fn main() {
-    println!("Hello, world!");
+    println!("Hello, world!\n");
     let year = 2014;
     for month in 0..12 {
         println!("Month {} in {} has {} days.", month, year, days_per_month(month, year));
+    }
+    println!("");
+    for year in 1899..2001 {
+        if is_leap_year(year) {
+            println!("Year {} is leap.", year);
+        }
     }
 }
