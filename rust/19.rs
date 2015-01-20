@@ -19,10 +19,9 @@
 fn is_leap_year(year: u16) -> bool {
     let divisible = (year % 4 == 0, year % 100 == 0, year % 400 == 0);
     match divisible {
-        (false, _, _) => false,
         (true, false, _) => true,
-        (true, true, false) => false,
-        (true, true, true) => true
+        (true, true, true) => true,
+        _ => false
     }
 }
 
