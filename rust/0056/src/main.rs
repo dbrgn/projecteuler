@@ -10,8 +10,8 @@
 
 extern crate num;
 
-use std::num::FromPrimitive;
-use num::bigint::BigUint;
+use num::FromPrimitive;
+use num::bigint::{BigUint, ToBigUint};
 
 
 fn main() {
@@ -34,7 +34,6 @@ fn main() {
 }
 
 
-#[allow(unstable)]
 fn do_pow(a : u8, b : u8) -> BigUint {
     let start : BigUint = FromPrimitive::from_u8(a).unwrap();
     let mut result = start.clone();
@@ -45,7 +44,6 @@ fn do_pow(a : u8, b : u8) -> BigUint {
     result
 }
 
-#[allow(unstable)]
 fn digital_sum(a : u8, b : u8) -> u16 {
     let result_string = do_pow(a, b).to_string();
     result_string.chars().fold(0, |a, b| a + b.to_digit(10).unwrap() as u16)
@@ -53,7 +51,6 @@ fn digital_sum(a : u8, b : u8) -> u16 {
 
 
 #[test]
-#[allow(unstable)]
 fn test_do_pow() {
     assert_eq!(do_pow(1, 1), 1.to_biguint().unwrap());
     assert_eq!(do_pow(5, 3), 125.to_biguint().unwrap());
